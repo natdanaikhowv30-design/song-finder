@@ -1,0 +1,3 @@
+# requirements.txt — ไม่มี dependency ภายนอกโดยเจตนา
+# เพื่อลดพื้นที่ผิวความเสี่ยงของ supply chain ในขั้น build
+text
