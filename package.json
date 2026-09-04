@@ -1,0 +1,17 @@
+{
+  "name": "songfinder-compliance",
+  "version": "1.0.0",
+  "type": "module",
+  "private": true,
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "build": "bash scripts/build.sh",
+    "dev": "netlify dev",
+    "test": "node --test tests/",
+    "compliance": "python3 -m privacy.generate --out public/compliance",
+    "zip": "bash scripts/make_zip.sh"
+  },
+  "devDependencies": {
+    "netlify-cli": "^17.38.0"
+  }
+}
