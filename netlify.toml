@@ -1,34 +1,19 @@
 [build]
-  command  = "bash scripts/build.sh"
-  publish  = "public"
-  functions = "netlify/functions"
+  publish = "public"
+  command = "echo 'Static site - no build step required'"
 
 [build.environment]
-  NODE_VERSION   = "20"
-  PYTHON_VERSION = "3.11"
+  NODE_VERSION = "20"
 
-[functions]
-  node_bundler = "esbuild"
-  # เอกสารที่สร้างตอน build ต้องถูกผนวกเข้ากับ bundle ของ function
-  included_files = ["public/compliance/**", "data/**"]
-
-[[redirects]]
-  from   = "/api/*"
-  to     = "/.netlify/functions/:splat"
-  status = 200
-  force  = true
+# บังคับ revalidate ข้อมูลเพลงทุกครั้ง ป้องกัน stale cache
+[[headers]]
+  for = "/songs.json"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
 
 [[headers]]
   for = "/*"
   [headers.values]
     X-Content-Type-Options = "nosniff"
-    X-Frame-Options        = "DENY"
-    Referrer-Policy        = "strict-origin-when-cross-origin"
-    Content-Security-Policy = "default-src 'self'; script-src 'self'; style-src 'self'"
-
-# ── บริบทของ deploy: chaos endpoint เปิดเฉพาะ non-production ──
-[context.production.environment]
-  CHAOS_ENABLED = "false"
-
-[context.deploy-preview.environment]
-  CHAOS_ENABLED = "true"
+    X-Frame-Options = "SAMEORIGIN"
+    Referrer-Policy = "strict-origin-when-cross-origin"
