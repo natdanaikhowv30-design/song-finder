@@ -1,0 +1,7 @@
+[
+  { "id": 1, "title": "คิดถึง", "artist": "Bodyslam", "genre": "Rock", "year": 2008 },
+  { "id": 2, "title": "ลาลาลอย", "artist": "Slot Machine", "genre": "Alternative", "year": 2013 },
+  { "id": 3, "title": "ยิ้ม", "artist": "Potato", "genre": "Pop Rock", "year": 2010 },
+  { "id": 4, "title": "เพลงรักเพลงแรก", "artist": "Cocktail", "genre": "Rock", "year": 2015 },
+  { "id": 5, "title": "ทุกวัน", "artist": "Getsunova", "genre": "Electronic Pop", "year": 2012 }
+]
