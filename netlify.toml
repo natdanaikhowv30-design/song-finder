@@ -9,3 +9,29 @@
 # Cron: นาทีที่ 0 ของทุกๆ 6 ชั่วโมง (00:00, 06:00, 12:00, 18:00)
 [functions."scheduled-warmup"]
   schedule = "0 */6 * * *"
+[build]
+  publish = "public"
+  command = "echo 'Static site + serverless functions'"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
+[[headers]]
+  for = "/songs.json"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
